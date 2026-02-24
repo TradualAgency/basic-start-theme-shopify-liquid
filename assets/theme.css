@@ -1,0 +1,370 @@
+/* === TOKENS REFERENCE ===
+   Pas alleen deze variabelen aan per klant (of via Shopify admin → Customize):
+   --color-background      : pagina achtergrond
+   --color-foreground      : primaire tekstkleur
+   --color-primary         : knoppen, accenten
+   --color-primary-text    : tekst op gekleurde knoppen
+   --color-link            : hyperlinks
+   --color-border          : lijnen en randen
+   --font-primary--family  : body lettertype
+   --font-heading--family  : heading lettertype
+   --font-size-base        : basis font grootte
+   --spacing-base          : basis ruimte tussen elementen
+   --border-radius-buttons : ronding knoppen
+   --border-radius-cards   : ronding afbeeldingen/kaarten
+   --style-border-radius-inputs : ronding invoervelden
+*/
+
+/* === Typography === */
+
+html {
+  font-size: var(--font-size-base);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading--family);
+  font-style: var(--font-heading--style);
+  font-weight: var(--font-heading--weight);
+}
+
+a {
+  color: var(--color-link);
+}
+
+/* === Buttons === */
+
+input[type="submit"],
+button {
+  background-color: var(--color-primary);
+  color: var(--color-primary-text);
+  border: none;
+  border-radius: var(--border-radius-buttons);
+  padding: 0.75em 1.5em;
+  cursor: pointer;
+  font: inherit;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  opacity: 0.85;
+}
+
+/* === Forms / Inputs === */
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  border: 1px solid var(--color-border);
+  padding: 0.5em 0.75em;
+}
+
+/* === Header === */
+
+header {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  position: relative;
+  text-decoration: none;
+  color: var(--color-foreground);
+}
+
+header a sup {
+  position: absolute;
+  left: 100%;
+  overflow: hidden;
+  max-width: var(--page-margin);
+}
+
+header svg {
+  width: 2rem;
+}
+
+header .header__menu,
+header .header__icons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* === Footer === */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--color-foreground);
+}
+
+footer .footer__links,
+footer .footer__payment {
+  display: flex;
+  gap: 1rem;
+}
+
+/* === Product page === */
+
+.product-images {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-base);
+}
+
+.product-image {
+  border-radius: var(--border-radius-cards);
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-base) / 2);
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-base);
+}
+
+/* === Collection grid === */
+
+.collection-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+.collection-product__image {
+  border-radius: var(--border-radius-cards);
+}
+
+/* === Cart === */
+
+/* (Cart uses default table/form styles) */
+
+/* === Blog / Article === */
+
+/* (Blog and article use default heading/paragraph styles) */
+
+/* === Search === */
+
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.search-results .prev,
+.search-results .page,
+.search-results .next {
+  grid-column: 1 / -1;
+}
+
+.search-result__image {
+  border-radius: var(--border-radius-cards);
+}
+
+/* === Collections list === */
+
+.collections {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--collection-card-size), 100%), 1fr));
+  gap: var(--grid-gap);
+}
+
+.collections--compact {
+  --collection-card-size: 160px;
+}
+
+.collections--full {
+  --collection-card-size: 280px;
+}
+
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-decoration: none;
+  color: var(--color-foreground);
+}
+
+.collection-card__image {
+  border-radius: var(--border-radius-cards);
+}
+
+/* === Custom section === */
+
+.custom-section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.custom-section__background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.custom-section__background img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-section__content {
+  display: grid;
+  grid-template-columns: var(--content-grid);
+}
+
+.custom-section__content > * {
+  grid-column: 2;
+}
+
+/* === Block: Text === */
+
+.text {
+  text-align: var(--text-align);
+}
+
+.text--title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.text--subtitle {
+  font-size: 1.5rem;
+}
+
+/* === Snippet: Image === */
+
+.image {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.image > img {
+  width: 100%;
+  height: auto;
+}
+
+/* === Hello World (demo section) === */
+
+.welcome {
+  display: grid;
+  grid-template-columns: var(--content-grid);
+  background-color: #f6f6f7;
+  padding: 72px 0;
+}
+
+.welcome-content {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.welcome-description {
+  max-width: 80ch;
+  line-height: 1.4;
+  margin-top: 1.5rem;
+}
+
+.icon {
+  width: 300px;
+}
+
+.highlights {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 50px;
+}
+
+@media (max-width: 1100px) {
+  .highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: #eef3ff;
+  color: rgb(92, 95, 98);
+  line-height: 1.4;
+}
+
+.highlight > * + * {
+  margin-top: 1rem;
+}
+
+.highlight h3 {
+  font-size: 1rem;
+  color: rgb(32, 34, 35);
+}
+
+.highlight-description {
+  flex: 1 1;
+}
+
+.highlight a {
+  display: flex;
+  width: fit-content;
+  background-color: rgb(250, 251, 251);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px -3px 0px 0px inset, rgba(255, 255, 255, 0.9) 0px 2px 0px 0px inset;
+  border: 1px solid rgb(140, 145, 150);
+  border-radius: 4px;
+  color: rgb(92, 95, 98);
+  padding: 3px 10px 5px;
+  text-decoration: none;
+}
+
+/* === Block: Group === */
+
+.group {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.group--horizontal {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--padding);
+}
+
+.group--vertical {
+  flex-direction: column;
+  align-items: var(--alignment);
+  padding: var(--padding) 0;
+}
